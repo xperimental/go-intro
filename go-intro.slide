@@ -123,3 +123,11 @@ Inside functions there is a short-cut for new variables:
 * $GOPATH (continued)
 
 .code gopath.txt
+
+* Public vs. private
+
+- Leading character decides
+
+.code public-private.go /START OMIT/,/END OMIT/
+
+
