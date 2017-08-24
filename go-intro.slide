@@ -1,0 +1,125 @@
+Go Intro
+An interactive introduction
+24 Aug 2017
+Tags: golang, workshop
+
+Robert Jacob
+hacKNology e.V.
+mail@robertjacob.de
+https://sourcewalker.net
+https://github.com/xperimental
+@xperimental
+
+* History
+
+Go ("golang") is a programming language that originated at Google.
+
+- Announced November 2009
+- Go 1.0 March 2012
+- Currently: Go 1.8.3 (24 May 2017)
+
+* Features
+
+- Static typing
+- Type inference
+- CSP-style concurrency
+- Garbage collection
+- Easy cross-compilation
+
+* Obligatory Hello World
+
+.play hello.go
+
+* Hello World Explanation
+
+.play hello.go
+
+- `package` defines a namespace ("package")
+- `import` makes other packages usable in current one
+- `func` defines functions
+
+* Variables
+
+Variables store values of a certain type. The type of a variable can not change during execution ("static typing").
+
+.code vars.go /START OMIT/,/END OMIT/
+
+* Type inference
+
+Compiler tries to infer type if you omit it during declaration:
+
+.play -edit vars-notype.go /START OMIT/,/END OMIT/
+
+* Simple variable types
+
+ UTF-8 strings:          string
+ UTF-8 character:        rune
+ Integers
+  Signed:                int, int8, int16, int32, int64
+  Unsigned:              uint, uint8, uint16, uint32, uint64
+ Floating point numbers: float32, float64
+ Complex numbers:        complex64, complex128
+
+* Pointers
+
+All types can also be used as a pointer type:
+
+.play pointers.go /START OMIT/,/END OMIT/
+
+Pointers are variables which contain an address of another variable.
+They can be `nil` to point to nothing, which creates an error when you try to access it:
+
+.play pointers-nil.go /START OMIT/,/END OMIT/
+
+* Multi declaration
+
+You can define more than one variable in a `var` block:
+
+ var (
+     string = "string"
+     integer = 5
+     float = 3.4
+ )
+
+* Constants
+
+- Typed like variables
+- Only simple types
+- Can not change value (compile error)
+- Only outside of functions
+
+.play constants.go /START OMIT/,/END OMIT/
+
+* Short declaration
+
+Inside functions there is a short-cut for new variables:
+
+.play vars-short.go /START OMIT/,/END OMIT/
+
+* Packages
+
+- Break programs into functional components.
+- One package = one directory.
+- Name is directory name (`main` is special).
+- Items (variables, constants, functions) can be public or private.
+- Use `import` to use public items of other packages.
+
+* $GOPATH
+
+- Directory on your computer (default = `$HOME/go`)
+- Single repository for "all Go code"
+- Three subdirectories (`src`, `pkg` and `bin`)
+
+ /home/xperimental/
+ |
+ +-+ go
+   |
+   +- src (sources)
+   |
+   +- pkg (package object files)
+   |
+   +- bin (built executables)
+
+* $GOPATH (continued)
+
+.code gopath.txt

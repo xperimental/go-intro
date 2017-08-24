@@ -1,0 +1,17 @@
+/home/xperimental/go
+├── bin
+│   └── goecho (and others)
+├── pkg
+│   └── linux_amd64
+│       ├── github.com
+│       └── golang.org
+└── src
+    ├── github.com
+    │   ├── xperimental
+    │   ├── xperimental
+    │   │   ├── goecho
+    │   │   ├── keys-service
+    │   │   └── <other repos>
+    │   └── <other users>
+    └── golang.org
+        └── x
