@@ -87,6 +87,12 @@ Inside functions there is a short-cut for new variables:
 
 .play vars-short.go /START OMIT/,/END OMIT/
 
+* Variables - Structures
+
+Complex variables can be created using `struct` types:
+
+.play vars-structs.go /START OMIT/,/END OMIT/
+
 * Constants
 
 - Typed like variables
