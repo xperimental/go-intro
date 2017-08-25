@@ -93,6 +93,12 @@ Complex variables can be created using `struct` types:
 
 .play vars-structs.go /START OMIT/,/END OMIT/
 
+* Variables - Composition
+
+`struct` can be combined:
+
+.play vars-composition.go /START OMIT/,/END OMIT/
+
 * Constants
 
 - Typed like variables
