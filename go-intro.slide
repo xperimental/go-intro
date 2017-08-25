@@ -44,13 +44,13 @@ Variables store values of a certain type. The type of a variable can not change 
 
 .code vars.go /START OMIT/,/END OMIT/
 
-* Type inference
+* Variables - Type inference
 
 Compiler tries to infer type if you omit it during declaration:
 
 .play -edit vars-notype.go /START OMIT/,/END OMIT/
 
-* Simple variable types
+* Variables - Simple variable types
 
  UTF-8 strings:          string
  UTF-8 character:        rune
@@ -60,7 +60,7 @@ Compiler tries to infer type if you omit it during declaration:
  Floating point numbers: float32, float64
  Complex numbers:        complex64, complex128
 
-* Pointers
+* Variables - Pointers
 
 All types can also be used as a pointer type:
 
@@ -71,7 +71,7 @@ They can be `nil` to point to nothing, which creates an error when you try to ac
 
 .play pointers-nil.go /START OMIT/,/END OMIT/
 
-* Multi declaration
+* Variables - Multi declaration
 
 You can define more than one variable in a `var` block:
 
@@ -81,6 +81,12 @@ You can define more than one variable in a `var` block:
      float = 3.4
  )
 
+* Variables - Short declaration
+
+Inside functions there is a short-cut for new variables:
+
+.play vars-short.go /START OMIT/,/END OMIT/
+
 * Constants
 
 - Typed like variables
@@ -89,12 +95,6 @@ You can define more than one variable in a `var` block:
 - Only outside of functions
 
 .play constants.go /START OMIT/,/END OMIT/
-
-* Short declaration
-
-Inside functions there is a short-cut for new variables:
-
-.play vars-short.go /START OMIT/,/END OMIT/
 
 * Functions
 
