@@ -132,6 +132,12 @@ Functions can return one or more results:
 
 .play -edit functions-return-multi.go /START OMIT/,/END OMIT/
 
+* Functions - Receivers
+
+Go is not object-oriented. But you can attach functions to types to create "methods":
+
+.play functions-receiver.go  /START OMIT/,/END OMIT/
+
 * Packages
 
 - Break programs into functional components.
