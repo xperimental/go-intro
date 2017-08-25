@@ -104,6 +104,25 @@ Inside functions there is a short-cut for new variables:
 - Items (variables, constants, functions) can be public or private.
 - Use `import` to use public items of other packages.
 
+* Package Names
+
+- Runtime packages (examples):
+
+ fmt
+ net/http
+
+- External packages (full path):
+
+ golang.org/x/crypto/ssh
+ github.com/gorilla/mux
+
+Download external packages using "go get":
+
+ go get -d golang.org/x/crypto/ssh (just download)
+ go get golang.org/x/crypto/ssh (download, compile, install binaries)
+
+But where are they downloaded to?
+
 * $GOPATH
 
 - Directory on your computer (default = `$HOME/go`)
