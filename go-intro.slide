@@ -108,6 +108,10 @@ Complex variables can be created using `struct` types:
 
 .play constants.go /START OMIT/,/END OMIT/
 
+*  
+
+.background imgs/break.jpg
+
 * Functions
 
 Define using `func`, call using name:
@@ -194,3 +198,9 @@ But where are they downloaded to?
 *  
 
 .background imgs/break.jpg
+
+* Goroutines
+
+Go can run functions asynchronous:
+
+.play goroutines.go /START OMIT/,/END OMIT/
