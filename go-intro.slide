@@ -96,6 +96,30 @@ Inside functions there is a short-cut for new variables:
 
 .play vars-short.go /START OMIT/,/END OMIT/
 
+* Functions
+
+Define using `func`, call using name:
+
+.play functions.go /START OMIT/,/END OMIT/
+
+* Functions - Parameters
+
+Pass parameters to functions:
+
+.play functions-params.go /START OMIT/,/END OMIT/
+
+* Function - Return values
+
+Functions can return one or more results:
+
+.play functions-return.go /START OMIT/,/END OMIT/
+
+* Functions - Multiple Return values
+
+Functions can return one or more results:
+
+.play -edit functions-return-multi.go /START OMIT/,/END OMIT/
+
 * Packages
 
 - Break programs into functional components.
