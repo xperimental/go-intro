@@ -244,3 +244,12 @@ Go can run functions asynchronous:
 You can define a buffer when making a channel:
 
 .play -edit channels-buffered.go /START OMIT/,/END OMIT/
+
+* Cross Compilation
+
+- Completely self-contained (compiler is also Go)
+- Different OSs: `linux`, `darwin`, `windows`
+- Different Architectures: `amd64`, `386`, `arm`, `arm64`, `mips`, ...
+- Set target using environment variables:
+
+ GOOS=darwin GOARCH=amd64 go install <package>
