@@ -22,7 +22,7 @@ Go ("golang") is a programming language that originated at Google.
 
 - Static typing
 - Type inference
-- CSP-style concurrency
+- CSP-style concurrency (Goroutines & Channels)
 - Garbage collection
 - Easy cross-compilation
 
@@ -167,6 +167,15 @@ Functions can return one or more results:
 Go is not object-oriented. But you can attach functions to types to create "methods":
 
 .play examples/functions/functions-receiver.go  /START OMIT/,/END OMIT/
+
+* Interfaces
+
+ type Reader interface {
+     Read() ([]byte, error)
+ }
+
+- Interfaces define types that have certain methods.
+- If a type defines the correct methods, it automatically satisfies the interface (no `implements` like in Java).
 
 * Packages
 
