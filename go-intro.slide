@@ -120,6 +120,20 @@ You can create new variables inside if, which are only available in the block:
 
 .play -edit flow-if-variable.go /START OMIT/,/END OMIT/
 
+* Flow Control - Loops
+
+- Classic `for`:
+
+.play flow-for-classic.go /START OMIT/,/END OMIT/
+
+- Range (with array):
+
+.play flow-for-range.go /START OMIT/,/END OMIT/
+
+- Endless:
+
+.play flow-for-endless.go /START OMIT/,/END OMIT/
+
 *  
 
 .background imgs/break.jpg
