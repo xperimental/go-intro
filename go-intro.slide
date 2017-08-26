@@ -262,3 +262,7 @@ You can define a buffer when making a channel:
 - Set target using environment variables:
 
  GOOS=darwin GOARCH=amd64 go install <package>
+
+* A "real" example
+
+Let's build a small web project together...
