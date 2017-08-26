@@ -204,3 +204,17 @@ But where are they downloaded to?
 Go can run functions asynchronous:
 
 .play goroutines.go /START OMIT/,/END OMIT/
+
+* Channels
+
+- Messaging between Goroutines
+- Typed
+- Blocking by default
+
+.play channels.go /START OMIT/,/END OMIT/
+
+* Channels - Buffering
+
+You can define a buffer when making a channel:
+
+.play -edit channels-buffered.go /START OMIT/,/END OMIT/
