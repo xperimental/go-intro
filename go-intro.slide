@@ -108,6 +108,18 @@ Complex variables can be created using `struct` types:
 
 .play constants.go /START OMIT/,/END OMIT/
 
+* Flow Control - If
+
+`if` can be used to check for conditions:
+
+.play -edit flow-if.go /START OMIT/,/END OMIT/
+
+* Flow Control - If Variables
+
+You can create new variables inside if, which are only available in the block:
+
+.play -edit flow-if-variable.go /START OMIT/,/END OMIT/
+
 *  
 
 .background imgs/break.jpg
