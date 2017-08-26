@@ -28,11 +28,11 @@ Go ("golang") is a programming language that originated at Google.
 
 * Obligatory Hello World
 
-.play hello.go
+.play examples/hello.go
 
 * Hello World Explanation
 
-.play hello.go
+.play examples/hello.go
 
 - `package` defines a namespace ("package")
 - `import` makes other packages usable in current one
@@ -42,13 +42,13 @@ Go ("golang") is a programming language that originated at Google.
 
 Variables store values of a certain type. The type of a variable can not change during execution ("static typing").
 
-.code vars.go /START OMIT/,/END OMIT/
+.code examples/vars/vars.go /START OMIT/,/END OMIT/
 
 * Variables - Type inference
 
 Compiler tries to infer type if you omit it during declaration:
 
-.play -edit vars-notype.go /START OMIT/,/END OMIT/
+.play -edit examples/vars/vars-notype.go /START OMIT/,/END OMIT/
 
 * Variables - Simple variable types
 
@@ -64,12 +64,12 @@ Compiler tries to infer type if you omit it during declaration:
 
 All types can also be used as a pointer type:
 
-.play pointers.go /START OMIT/,/END OMIT/
+.play examples/vars/pointers.go /START OMIT/,/END OMIT/
 
 Pointers are variables which contain an address of another variable.
 They can be `nil` to point to nothing, which creates an error when you try to access it:
 
-.play pointers-nil.go /START OMIT/,/END OMIT/
+.play examples/vars/pointers-nil.go /START OMIT/,/END OMIT/
 
 * Variables - Multi declaration
 
@@ -85,19 +85,19 @@ You can define more than one variable in a `var` block:
 
 Inside functions there is a short-cut for new variables:
 
-.play vars-short.go /START OMIT/,/END OMIT/
+.play examples/vars/vars-short.go /START OMIT/,/END OMIT/
 
 * Variables - Structures
 
 Complex variables can be created using `struct` types:
 
-.play vars-structs.go /START OMIT/,/END OMIT/
+.play examples/vars/vars-structs.go /START OMIT/,/END OMIT/
 
 * Variables - Composition
 
 `struct` can be combined:
 
-.play vars-composition.go /START OMIT/,/END OMIT/
+.play examples/vars/vars-composition.go /START OMIT/,/END OMIT/
 
 * Constants
 
@@ -106,33 +106,33 @@ Complex variables can be created using `struct` types:
 - Can not change value (compile error)
 - Only outside of functions
 
-.play constants.go /START OMIT/,/END OMIT/
+.play examples/vars/constants.go /START OMIT/,/END OMIT/
 
 * Flow Control - If
 
 `if` can be used to check for conditions:
 
-.play -edit flow-if.go /START OMIT/,/END OMIT/
+.play -edit examples/flow/flow-if.go /START OMIT/,/END OMIT/
 
 * Flow Control - If Variables
 
 You can create new variables inside if, which are only available in the block:
 
-.play -edit flow-if-variable.go /START OMIT/,/END OMIT/
+.play -edit examples/flow/flow-if-variable.go /START OMIT/,/END OMIT/
 
 * Flow Control - Loops
 
 - Classic `for`:
 
-.play flow-for-classic.go /START OMIT/,/END OMIT/
+.play examples/flow/flow-for-classic.go /START OMIT/,/END OMIT/
 
 - Range (with array):
 
-.play flow-for-range.go /START OMIT/,/END OMIT/
+.play examples/flow/flow-for-range.go /START OMIT/,/END OMIT/
 
 - Endless:
 
-.play flow-for-endless.go /START OMIT/,/END OMIT/
+.play examples/flow/flow-for-endless.go /START OMIT/,/END OMIT/
 
 *  
 
@@ -142,31 +142,31 @@ You can create new variables inside if, which are only available in the block:
 
 Define using `func`, call using name:
 
-.play functions.go /START OMIT/,/END OMIT/
+.play examples/functions/functions.go /START OMIT/,/END OMIT/
 
 * Functions - Parameters
 
 Pass parameters to functions:
 
-.play functions-params.go /START OMIT/,/END OMIT/
+.play examples/functions/functions-params.go /START OMIT/,/END OMIT/
 
 * Function - Return values
 
 Functions can return one or more results:
 
-.play functions-return.go /START OMIT/,/END OMIT/
+.play examples/functions/functions-return.go /START OMIT/,/END OMIT/
 
 * Functions - Multiple Return values
 
 Functions can return one or more results:
 
-.play -edit functions-return-multi.go /START OMIT/,/END OMIT/
+.play -edit examples/functions/functions-return-multi.go /START OMIT/,/END OMIT/
 
 * Functions - Receivers
 
 Go is not object-oriented. But you can attach functions to types to create "methods":
 
-.play functions-receiver.go  /START OMIT/,/END OMIT/
+.play examples/functions/functions-receiver.go  /START OMIT/,/END OMIT/
 
 * Packages
 
@@ -219,7 +219,7 @@ But where are they downloaded to?
 
 - Leading character decides
 
-.code public-private.go /START OMIT/,/END OMIT/
+.code examples/public-private.go /START OMIT/,/END OMIT/
 
 *  
 
@@ -229,7 +229,7 @@ But where are they downloaded to?
 
 Go can run functions asynchronous:
 
-.play goroutines.go /START OMIT/,/END OMIT/
+.play examples/goroutines/goroutines.go /START OMIT/,/END OMIT/
 
 * Channels
 
@@ -237,13 +237,13 @@ Go can run functions asynchronous:
 - Typed
 - Blocking by default
 
-.play channels.go /START OMIT/,/END OMIT/
+.play examples/goroutines/channels.go /START OMIT/,/END OMIT/
 
 * Channels - Buffering
 
 You can define a buffer when making a channel:
 
-.play -edit channels-buffered.go /START OMIT/,/END OMIT/
+.play -edit examples/goroutines/channels-buffered.go /START OMIT/,/END OMIT/
 
 * Cross Compilation
 
