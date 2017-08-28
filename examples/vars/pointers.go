@@ -11,5 +11,5 @@ func main() {
 
 	fmt.Printf("value = %#v\n", value)
 	fmt.Printf("valuePointer = %#v\n", valuePointer)
-	fmt.Printf("*valuePointer = %#v\n", *valuePointer)
+	fmt.Printf("value2 = %#v\n", value2)
 }

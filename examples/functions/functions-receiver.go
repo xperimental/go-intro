@@ -11,8 +11,6 @@ func (p person) SayHello() {
 	fmt.Printf("%s says hello!", p.name)
 }
 
-// END OMIT
-
 func main() {
 	fry := person{
 		name: "Fry",
@@ -20,3 +18,5 @@ func main() {
 
 	fry.SayHello()
 }
+
+// END OMIT
