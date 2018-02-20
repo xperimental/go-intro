@@ -64,16 +64,6 @@ Inside functions there is a short-cut for new variables:
 
 .play examples/vars/vars-short.go /START OMIT/,/END OMIT/
 
-* Variables - Simple variable types
-
- UTF-8 strings:          string
- UTF-8 character:        rune
- Integers
-  Signed:                int, int8, int16, int32, int64
-  Unsigned:              uint, uint8, uint16, uint32, uint64
- Floating point numbers: float32, float64
- Complex numbers:        complex64, complex128
-
 * Variables - Pointers
 
 Pointers are variables which contain an address of another variable. Pointers can be used with all types, and are also statically typed:
@@ -89,12 +79,6 @@ They can be `nil` to point to nothing, but this creates an error when you try to
 Complex variables can be created using `struct` types:
 
 .play examples/vars/vars-structs.go /START OMIT/,/END OMIT/
-
-* Variables - Composition
-
-`struct` can be combined:
-
-.play examples/vars/vars-composition.go /START OMIT/,/END OMIT/
 
 * Constants
 
@@ -165,21 +149,6 @@ Functions can return one or more results:
 
 .play -edit examples/functions/functions-return-multi.go /START OMIT/,/END OMIT/
 
-* Functions - Receivers
-
-Go is not object-oriented. But you can attach functions to types to create "methods":
-
-.play examples/functions/functions-receiver.go  /START OMIT/,/END OMIT/
-
-* Interfaces
-
- type Reader interface {
-     Read() ([]byte, error)
- }
-
-- Interfaces define types that have certain methods.
-- If a type defines the correct methods, it automatically satisfies the interface (no `implements` like in Java).
-
 * Packages
 
 Packages can be used to break up programs into components that can be reused and shared:
@@ -208,8 +177,7 @@ Items (variables, constants, functions) can be public or private:
 
 Download external packages using "go get":
 
- go get -d golang.org/x/crypto/ssh (just download)
- go get golang.org/x/crypto/ssh (download, compile, install binaries)
+ go get golang.org/x/crypto/ssh
 
 But where are they downloaded to?
 
@@ -233,35 +201,13 @@ But where are they downloaded to?
 
 .code gopath.txt
 
-* Goroutines
+* What's More?
 
-Go can run functions asynchronous:
-
-.play examples/goroutines/goroutines.go /START OMIT/,/END OMIT/
-
-* Channels
-
-- Messaging between Goroutines
-- Typed
-- Blocking by default
-
-.play examples/goroutines/channels.go /START OMIT/,/END OMIT/
-
-* Channels - Buffering
-
-You can define a buffer when making a channel:
-
-.play -edit examples/goroutines/channels-buffered.go /START OMIT/,/END OMIT/
-
-* Cross Compilation
-
-- Completely self-contained (compiler is also Go)
-- Different OSs: `linux`, `darwin`, `windows`
-- Different Architectures: `amd64`, `386`, `arm`, `arm64`, `mips`, ...
-- Set target using environment variables:
-
- GOOS=darwin GOARCH=amd64 go install <package>
-
-* A "real" example
-
-Let's build a small web project together...
+- Vendoring & Dependency Management
+- Cross-Compilation
+- Struct Composition
+- Struct Tags
+- Function Receivers
+- Interfaces
+- Goroutines
+- Channels
