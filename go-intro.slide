@@ -26,6 +26,7 @@ It is just called "Go" but everyone is using "golang" to search for it online to
 - CSP-style concurrency (Goroutines & Channels)
 - Garbage collection
 - Easy cross-compilation
+- Very fast compile
 
 * Obligatory Hello World
 
@@ -73,6 +74,8 @@ Pointers are variables which contain an address of another variable. Pointers ca
 They can be `nil` to point to nothing, but this creates an error when you try to access ("dereference") it:
 
 .play -edit examples/vars/pointers-nil.go /START OMIT/,/END OMIT/
+
+But there is no pointer arithmetic (like in C), so 🎉
 
 * Variables - Structures
 
