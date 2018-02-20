@@ -5,7 +5,6 @@ import (
 	"fmt"
 )
 
-// START OMIT
 func sayHello(name string) error {
 	if len(name) == 0 {
 		return errors.New("name can not be empty")
@@ -16,14 +15,15 @@ func sayHello(name string) error {
 }
 
 func main() {
+	// START OMIT
 	name := ""
 
+	// func sayHello(name string) error
 	if err := sayHello(name); err != nil { // HL
 		fmt.Printf("Error saying hello: %s\n", err)
 	}
 
-	// err is not defined here
+	// err is not defined here // HL
 	// fmt.Println(err)
+	// END OMIT
 }
-
-// END OMIT

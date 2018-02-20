@@ -6,7 +6,7 @@ This repository contains slides and examples used for my Go introductory worksho
 
 If you have a working Go installation you can use `go get` to download this repo to your machine for playing with the examples:
 
-```
+```bash
 go get -d github.com/xperimental/go-intro
 ```
 

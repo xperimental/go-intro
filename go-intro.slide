@@ -1,22 +1,23 @@
 Go Intro
 An interactive introduction
-26 Aug 2017
+21 Feb 2018
 Tags: golang, workshop
 
 Robert Jacob
-hacKNology e.V.
-mail@robertjacob.de
-https://sourcewalker.net
+Team dust
+robert.jacob@holidaycheck.com
 https://github.com/xperimental/go-intro
 @xperimental
 
 * History
 
-Go ("golang") is a programming language that originated at Google.
+Go is a programming language that originated at Google.
+
+It is just called "Go" but everyone is using "golang" to search for it online to reduce the false-positives.
 
 - Announced November 2009
 - Go 1.0 March 2012
-- Currently: Go 1.9 (24 August 2017)
+- Currently: Go 1.10 (2018-02-16)
 
 * Features
 
@@ -37,6 +38,7 @@ Go ("golang") is a programming language that originated at Google.
 - `package` defines a namespace ("package")
 - `import` makes other packages usable in current one
 - `func` defines functions
+- `main.main()` is the entrypoint
 
 * Variables
 
@@ -44,11 +46,23 @@ Variables store values of a certain type. The type of a variable can not change 
 
 .code examples/vars/vars.go /START OMIT/,/END OMIT/
 
-* Variables - Type inference
-
 Compiler tries to infer type if you omit it during declaration:
 
 .play -edit examples/vars/vars-notype.go /START OMIT/,/END OMIT/
+
+* Variables (contd.)
+
+You can define more than one variable in a `var` block:
+
+ var (
+     string = "string"
+     integer = 5
+     float = 3.4
+ )
+
+Inside functions there is a short-cut for new variables:
+
+.play examples/vars/vars-short.go /START OMIT/,/END OMIT/
 
 * Variables - Simple variable types
 
@@ -62,30 +76,13 @@ Compiler tries to infer type if you omit it during declaration:
 
 * Variables - Pointers
 
-All types can also be used as a pointer type:
+Pointers are variables which contain an address of another variable. Pointers can be used with all types, and are also statically typed:
 
 .play examples/vars/pointers.go /START OMIT/,/END OMIT/
 
-Pointers are variables which contain an address of another variable.
-They can be `nil` to point to nothing, which creates an error when you try to access it:
+They can be `nil` to point to nothing, but this creates an error when you try to access ("dereference") it:
 
-.play examples/vars/pointers-nil.go /START OMIT/,/END OMIT/
-
-* Variables - Multi declaration
-
-You can define more than one variable in a `var` block:
-
- var (
-     string = "string"
-     integer = 5
-     float = 3.4
- )
-
-* Variables - Short declaration
-
-Inside functions there is a short-cut for new variables:
-
-.play examples/vars/vars-short.go /START OMIT/,/END OMIT/
+.play -edit examples/vars/pointers-nil.go /START OMIT/,/END OMIT/
 
 * Variables - Structures
 
@@ -114,11 +111,17 @@ Complex variables can be created using `struct` types:
 
 .play -edit examples/flow/flow-if.go /START OMIT/,/END OMIT/
 
-* Flow Control - If Variables
+* Flow Control - Switch
 
-You can create new variables inside if, which are only available in the block:
+`switch` can be used to combine multiple `if`-`else` blocks:
 
-.play -edit examples/flow/flow-if-variable.go /START OMIT/,/END OMIT/
+.play examples/flow/flow-switch-basic.go /START OMIT/,/END OMIT/
+
+* Flow Control - Switch Without Variable
+
+If used without variable, the case statements need to be booleans:
+
+.play examples/flow/flow-switch-bare.go /START OMIT/,/END OMIT/
 
 * Flow Control - Loops
 
@@ -134,9 +137,11 @@ You can create new variables inside if, which are only available in the block:
 
 .play examples/flow/flow-for-endless.go /START OMIT/,/END OMIT/
 
-*  
+* Flow Control - Scoped Variables
 
-.background imgs/break.jpg
+You can create new variables inside blocks (if, switch, for), which are only available in the block:
+
+.play -edit examples/flow/flow-if-variable.go /START OMIT/,/END OMIT/
 
 * Functions
 
@@ -144,9 +149,7 @@ Define using `func`, call using name:
 
 .play examples/functions/functions.go /START OMIT/,/END OMIT/
 
-* Functions - Parameters
-
-Pass parameters to functions:
+You can pass parameters to functions:
 
 .play examples/functions/functions-params.go /START OMIT/,/END OMIT/
 
@@ -179,11 +182,17 @@ Go is not object-oriented. But you can attach functions to types to create "meth
 
 * Packages
 
-- Break programs into functional components.
-- One package = one directory.
-- Name is directory name (`main` is special).
-- Items (variables, constants, functions) can be public or private.
+Packages can be used to break up programs into components that can be reused and shared:
+
+- One directory = one package
+- Directory name = package name (`main` is special).
+
+Items (variables, constants, functions) can be public or private:
+
 - Use `import` to use public items of other packages.
+- Leading character decides if private or public:
+
+.code examples/public-private.go /START OMIT/,/END OMIT/
 
 * Package Names
 
@@ -206,33 +215,23 @@ But where are they downloaded to?
 
 * $GOPATH
 
-- Directory on your computer (default = `$HOME/go`)
+- Local directory (default = `$HOME/go`)
 - Single repository for "all Go code"
 - Three subdirectories (`src`, `pkg` and `bin`)
 
- /home/xperimental/
- |
- +-+ go
-   |
-   +- src (sources)
-   |
-   +- pkg (package object files)
-   |
-   +- bin (built executables)
+ /home/rjacob/
+ │
+ └── go
+     │
+     ├── src (sources)
+     │
+     ├── pkg (package object files)
+     │
+     └── bin (built executables)
 
 * $GOPATH (continued)
 
 .code gopath.txt
-
-* Public vs. private
-
-- Leading character decides
-
-.code examples/public-private.go /START OMIT/,/END OMIT/
-
-*  
-
-.background imgs/break.jpg
 
 * Goroutines
 

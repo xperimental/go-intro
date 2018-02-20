@@ -8,6 +8,7 @@ import (
 
 func main() {
 	fileName := "file.txt"
+	// START OMIT
 	file, err := os.Open(fileName)
 	switch {
 	case os.IsNotExist(err):
@@ -17,6 +18,7 @@ func main() {
 	default:
 	}
 	defer file.Close()
+	// END OMIT
 
 	// Show file
 	io.Copy(os.Stdout, file)
