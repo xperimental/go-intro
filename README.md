@@ -24,4 +24,4 @@ present
 
 ## Talks
 
-- [v1](https://github.com/xperimental/go-intro/tree/v1) held at [FFBW::Camp](https://ffbsee.de/doku.php?id=events:ffbw_camp)
+- [v1](https://github.com/xperimental/go-intro/tree/v1) held at [FFBW::Camp 2017](https://ffbsee.de/doku.php?id=events:camp)
