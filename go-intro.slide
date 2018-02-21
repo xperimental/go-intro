@@ -27,6 +27,7 @@ It is just called "Go" but everyone is using "golang" to search for it online to
 - Garbage collection
 - Easy cross-compilation
 - Very fast compile
+- Extensive standard library
 
 * Obligatory Hello World
 
@@ -212,11 +213,17 @@ You can define a buffer when making a channel:
 
 .play -edit examples/goroutines/channels-buffered.go /START OMIT/,/END OMIT/
 
+* Channels - Loops
+
+Channels can be used like an array in a `for` loop:
+
+.play -edit examples/goroutines/channels-for.go /START OMIT/,/END OMIT/
+
 * What's More?
 
-- Vendoring & Dependency Management
-- Cross-Compilation
-- Struct Composition
-- Struct Tags
-- Function Receivers
 - Interfaces
+- Struct Composition
+- Function Receivers
+- Cross-Compilation
+- Struct Tags
+- Vendoring & Dependency Management
