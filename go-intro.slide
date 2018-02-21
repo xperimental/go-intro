@@ -37,9 +37,9 @@ It is just called "Go" but everyone is using "golang" to search for it online to
 .play examples/hello.go
 
 - `package` defines a namespace ("package")
-- `import` makes other packages usable in current one
+- `import` makes public contents of other packages usable in current one
 - `func` defines functions
-- `main.main()` is the entrypoint
+- `main.main()` is where program execution starts
 
 * Variables
 
@@ -47,19 +47,9 @@ Variables store values of a certain type. The type of a variable can not change 
 
 .code examples/vars/vars.go /START OMIT/,/END OMIT/
 
-Compiler tries to infer type if you omit it during declaration:
+The compiler tries to infer the type if you omit it during declaration:
 
 .play -edit examples/vars/vars-notype.go /START OMIT/,/END OMIT/
-
-* Variables (contd.)
-
-You can define more than one variable in a `var` block:
-
- var (
-     string = "string"
-     integer = 5
-     float = 3.4
- )
 
 Inside functions there is a short-cut for new variables:
 
@@ -140,15 +130,9 @@ You can pass parameters to functions:
 
 .play examples/functions/functions-params.go /START OMIT/,/END OMIT/
 
-* Function - Return values
-
-Functions can return one or more results:
-
-.play examples/functions/functions-return.go /START OMIT/,/END OMIT/
-
 * Functions - Multiple Return values
 
-Functions can return one or more results:
+Functions can return more than one result:
 
 .play -edit examples/functions/functions-return-multi.go /START OMIT/,/END OMIT/
 
