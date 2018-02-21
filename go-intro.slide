@@ -188,6 +188,30 @@ But where are they downloaded to?
 
 .code gopath.txt
 
+*  
+
+.background imgs/break.jpg
+
+* Goroutines
+
+Go can run functions asynchronous:
+
+.play examples/goroutines/goroutines.go /START OMIT/,/END OMIT/
+
+* Channels
+
+- Messaging between Goroutines
+- Typed
+- Blocking by default
+
+.play examples/goroutines/channels.go /START OMIT/,/END OMIT/
+
+* Channels - Buffering
+
+You can define a buffer when making a channel:
+
+.play -edit examples/goroutines/channels-buffered.go /START OMIT/,/END OMIT/
+
 * What's More?
 
 - Vendoring & Dependency Management
@@ -196,5 +220,3 @@ But where are they downloaded to?
 - Struct Tags
 - Function Receivers
 - Interfaces
-- Goroutines
-- Channels
