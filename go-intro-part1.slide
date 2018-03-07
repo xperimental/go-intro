@@ -175,7 +175,7 @@ But where are they downloaded to?
 - Single repository for "all Go code"
 - Three subdirectories (`src`, `pkg` and `bin`)
 
- /home/rjacob/
+ /home/xperimental/
  │
  └── go
      │
