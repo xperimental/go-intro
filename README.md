@@ -25,4 +25,4 @@ present
 ## Talks
 
 - [v1](https://github.com/xperimental/go-intro/tree/v1) held at [FFBW::Camp 2017](https://ffbsee.de/doku.php?id=events:camp)
-- [v2](https://github.com/xperimental/go-intro/tree/v2) first part of workshop at [HolidayCheck AG](https://www.holidaycheck.de)
+- Workshop at [HolidayCheck AG](https://www.holidaycheck.de): [v2](https://github.com/xperimental/go-intro/tree/v2) first part; [v3](https://github.com/xperimental/go-intro/tree/v3) second part
