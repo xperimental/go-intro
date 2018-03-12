@@ -6,7 +6,7 @@ import (
 )
 
 // START OMIT
-func createHello(name string) (string, error) {
+func createHello(name string) (string, error) { // HL
 	if len(name) == 0 {
 		return "", errors.New("need a name")
 	}
@@ -16,7 +16,7 @@ func createHello(name string) (string, error) {
 }
 
 func main() {
-	hello, err := createHello("")
+	hello, err := createHello("") // HL
 	if err != nil {
 		fmt.Printf("Error creating hello: %s\n", err)
 		return

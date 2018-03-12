@@ -6,7 +6,7 @@ This repository contains slides and examples used for my Go introductory worksho
 
 If you have a working Go installation you can use `go get` to download this repo to your machine for playing with the examples:
 
-```
+```bash
 go get -d github.com/xperimental/go-intro
 ```
 
@@ -25,3 +25,4 @@ present
 ## Talks
 
 - [v1](https://github.com/xperimental/go-intro/tree/v1) held at [FFBW::Camp 2017](https://ffbsee.de/doku.php?id=events:camp)
+- [v2](https://github.com/xperimental/go-intro/tree/v2) first part of workshop at [HolidayCheck AG](https://www.holidaycheck.de)

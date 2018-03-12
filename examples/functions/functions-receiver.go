@@ -7,8 +7,8 @@ type person struct {
 	name string
 }
 
-func (p person) SayHello() {
-	fmt.Printf("%s says hello!", p.name)
+func (p person) Say(text string) { // p is the receiver of type person // HL
+	fmt.Printf("%s says %q", p.name, text)
 }
 
 func main() {
@@ -16,7 +16,7 @@ func main() {
 		name: "Fry",
 	}
 
-	fry.SayHello()
+	fry.Say("Hello!")
 }
 
 // END OMIT

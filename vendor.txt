@@ -1,0 +1,13 @@
+/home/xperimental/go/src
+└── github.com
+        ├── spf13
+        │   └── pflag                            // "github.com/spf13/pflag"
+        │       └── <.go files>
+        └── xperimental
+            └── linky                            // "github.com/xperimental/linky"
+                ├── vendor
+                │   └── github.com
+                │       └── spf13
+                │           └── pflag            // "github.com/spf13/pflag"
+                │               └── <.go files>
+                └── main.go

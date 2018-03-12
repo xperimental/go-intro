@@ -1,0 +1,172 @@
+Go Intro (Part Two)
+An interactive introduction (again)
+8 Mar 2018
+Tags: golang, workshop
+
+Robert Jacob
+https://github.com/xperimental/go-intro
+@xperimental
+
+* Recap
+
+- Variables
+- Constants
+- Flow Control: `if`, `switch`, `for`
+- Functions
+- Packages
+- `$GOPATH`
+- Basic Concurrency using Goroutines & Channels
+
+* Arrays
+
+Arrays can contain a fixed number of elements of a certain type.
+They can not be resized.
+
+.play examples/vars/arrays.go /START OMIT/,/END OMIT/
+
+The built-in `len()` function can be used to get the array length.
+
+.play examples/vars/arrays-len.go /START OMIT/,/END OMIT/
+
+* Slices
+
+Slices are "views" on a backing array. They can be resized.
+
+.play -edit examples/vars/slices.go /START OMIT/,/END OMIT/
+
+The `len()` built-in also works on slices. There is an additional `cap()` built-in function that shows the size of the backing array.
+
+* Append
+
+`append()` can be used to append elements to a slice. If the backing array of the slice is too small (or even `nil`), a new one is allocated.
+
+.play -edit examples/vars/slices-append.go /START OMIT/,/END OMIT/
+
+Append will overwrite values in the middle of an array! Be aware of this when using multiple slices on the same array:
+
+.play examples/vars/slices-overlap.go /START OMIT/,/END OMIT/
+
+Most of the time you will work with slices on an array that you did not create yourself.
+
+* Maps
+
+The `map` type can be used to create associative arrays:
+
+.play examples/vars/maps.go /START OMIT/,/END OMIT/
+
+Map variables are pointers. The uninitialized `nil` value is not interchangable with an empty map, because it can not be directly written to:
+
+.play examples/vars/maps-nil.go /START OMIT/,/END OMIT/
+
+Be aware that multiple variables can point to the same map when doing modifications:
+
+.play examples/vars/maps-pointer.go /START OMIT/,/END OMIT/
+
+* Methods
+
+Go is not object-oriented. But you can "attach" functions to any type using so-called receivers making them "methods":
+
+.play examples/functions/functions-receiver.go /START OMIT/,/END OMIT/
+
+Receivers can be values or pointers, your use-case determines which you need.
+
+: Mention that this works not just with structs but with any type.
+
+* Interfaces
+
+Interfaces define a set of method signatures. Any type that implements the methods can be used as the interface type.
+
+.play examples/interfaces/interfaces.go /START OMIT/,/END OMIT/
+
+* Interfaces - Duck Typing
+
+There is no need to state that a type implements an interface. If the methods are present, the compiler will recognize it. Even across package boundaries:
+
+.play examples/interfaces/interfaces-duck.go /START OMIT/,/END OMIT/
+
+* Error Handling
+
+If your function can cause an error, return a value of type `error` as the last return value:
+
+.code examples/errors/errors.go /START OMIT/,/END OMIT/
+
+This encourages handling errors close to where they happen instead of "bubbling up" to surrounding code.
+
+* Error Messages
+
+The message returned by `Error()` should have no punctuation and start lower-case, so they can be cascaded by surrounding code:
+
+    user, err := db.Get(userID)
+    if err != nil {
+        return fmt.Errorf("error while getting user: %s", innerErr)
+    }
+    --> error while getting user: database error: connection timed out
+
+* Custom Error Types
+
+`error` is a built-in interface. The definition looks like this:
+
+    type error interface {
+        Error() string
+    }
+
+Because it is an interface, custom error types can be defined:
+
+.code examples/errors/errors-custom.go /START OMIT/,/END OMIT/
+
+: Custom error types are typically used to convey more information to surrounding error handling code, if that is not needed a generic error is usually fine.
+
+* Dependency Management
+
+By default Go has a problem with handling dependencies:
+
+- `$GOPATH` stores all source
+- Standard "go get" gets packages including all dependencies, but
+- "go get" retrieves the current `master` version
+- Only repositories missing from `$GOPATH` are retrieved by "go get"
+
+So a few tools were invented:
+
+- govendor (what we used to use)
+- godep
+- Glide
+- dep (what we use, currently version 0.4.1)
+- vgo (what might be the future)
+
+* Vendoring
+
+Go 1.5 made vendoring a part of the tooling. When a directory in the source tree is called "vendor" its subpaths behave special:
+
+.code vendor.txt
+
+In this case `main.go` would use the "pflag" package from the vendor directory and not the general one.
+
+* Using dep
+
+Initialize a project. This will respect current dependencies and convert from previous tools:
+
+    dep init
+
+See current status:
+
+    dep status
+
+Add a new dependency:
+
+    dep ensure -add github.com/spf13/pflag@1.0.0
+
+Update state of vendoring directory (idempotent after first run):
+
+    dep ensure
+
+Update all dependencies respecting "constraints":
+
+    dep ensure -update
+
+* What's More?
+
+- Struct Composition
+- Type Assertions / Type Switches
+- Advanced Concurrency with Goroutines and Channels
+- Cross-Compilation
+- Struct Tags
