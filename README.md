@@ -4,6 +4,15 @@ This repository contains slides and examples used for my Go introductory worksho
 
 ## Usage
 
+### View online
+
+The slides can be viewed online using a public server:
+
+- [Part 1](https://go-talks.appspot.com/github.com/xperimental/go-intro/go-intro-part1.slide)
+- [Part 2](https://go-talks.appspot.com/github.com/xperimental/go-intro/go-intro-part2.slide)
+
+### Local server
+
 If you have a working Go installation you can use `go get` to download this repo to your machine for playing with the examples:
 
 ```bash
