@@ -1,7 +1,7 @@
 package main
 
 // START OMIT
-// taken from io package
+// see io package in stdlib
 type Reader interface {
 	Read(p []byte) (int, error)
 }

@@ -9,7 +9,7 @@ func main() {
 	os := runtime.GOOS
 	// START OMIT
 	fmt.Print("Go runs on ")
-	switch os { // os is a string
+	switch os { // os is a string // HL
 	case "darwin":
 		fmt.Println("OS X.")
 	case "linux":

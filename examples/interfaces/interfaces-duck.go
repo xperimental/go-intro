@@ -21,16 +21,15 @@ func (r *customReader) Read(buf []byte) (int, error) {
 	return n, nil
 }
 
-// START OMIT
 func main() {
-	// struct with a Read method
+	// START OMIT
+	// custom struct with a Read method
 	v := &customReader{
 		content: "Some text",
 	}
 
-	// ioutil.ReadAll(r io.Reader) ([]byte, error)
-	bytes, _ := ioutil.ReadAll(v) // HL
+	// ioutil.ReadAll is from the stdlib and uses io.Reader
+	bytes, _ := ioutil.ReadAll(v) // can use custom struct // HL
+	// END OMIT
 	fmt.Printf("bytes = %#v", bytes)
 }
-
-// END OMIT
