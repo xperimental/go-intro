@@ -1,12 +1,19 @@
 package main
 
+import (
+	"fmt"
+	"math"
+)
+
 // START OMIT
 const (
 	integer = 5
+	float   = math.Pi
 )
 
 func main() {
-	integer = 6 // will not compile
+	fmt.Printf("integer=%t\n", integer)
+	fmt.Printf("float=%t\n", float)
 }
 
 // END OMIT

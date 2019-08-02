@@ -30,7 +30,7 @@ It is just called "Go" but everyone is using "golang" to search for it online to
 
 * Obligatory Hello World
 
-.play examples/hello.go
+.play -edit examples/hello.go
 
 * Hello World Explanation
 
@@ -40,6 +40,17 @@ It is just called "Go" but everyone is using "golang" to search for it online to
 - `import` makes public contents of other packages usable in current one
 - `func` defines functions
 - `main.main()` is where program execution starts
+
+* Visibility
+
+Go only has two visibilities:
+
+- package private
+- Public
+
+Everything that has a capital first letter will be `Public`, everything else is `private`:
+
+.code examples/public-private.go /START OMIT/,/END OMIT/
 
 * Variables
 
@@ -65,7 +76,7 @@ They can be `nil` to point to nothing, but this creates an error when you try to
 
 .play -edit examples/vars/pointers-nil.go /START OMIT/,/END OMIT/
 
-But there is no pointer arithmetic (like in C), so 🎉
+But there is no pointer arithmetic (unlike C), so 🎉
 
 * Variables - Structures
 
@@ -78,9 +89,10 @@ Complex variables can be created using `struct` types:
 - Typed like variables
 - Only simple types
 - Can not change value (compile error)
-- Only outside of functions
+- Only outside of functions (package scope)
+- Floating-point numbers have arbitrary precision (not limited to `float64`)
 
-.play examples/vars/constants.go /START OMIT/,/END OMIT/
+.play -edit examples/vars/constants.go /START OMIT/,/END OMIT/
 
 * Flow Control - If
 
@@ -136,19 +148,21 @@ Functions can return more than one result:
 
 .play -edit examples/functions/functions-return-multi.go /START OMIT/,/END OMIT/
 
+* Error Handling
+
+If your function can cause an error, return a value of type `error` as the last return value:
+
+.code examples/errors/errors.go /START OMIT/,/END OMIT/
+
+This encourages handling errors close to where they happen instead of "bubbling up" to surrounding code.
+
 * Packages
 
 Packages can be used to break up programs into components that can be reused and shared:
 
 - One directory = one package
-- Directory name = package name (`main` is special).
-
-Items (variables, constants, functions) can be public or private:
-
-- Use `import` to use public items of other packages.
-- Leading character decides if private or public:
-
-.code examples/public-private.go /START OMIT/,/END OMIT/
+- Convention: directory name = package name
+- `main` is special: will generate an executable
 
 * Package Names
 
@@ -164,33 +178,11 @@ Items (variables, constants, functions) can be public or private:
 
 Download external packages using "go get":
 
- go get golang.org/x/crypto/ssh
+ go get -m golang.org/x/crypto/ssh
 
 But where are they downloaded to?
 
-* $GOPATH
-
-- Local directory (default = `$HOME/go`)
-- Single repository for "all Go code"
-- Three subdirectories (`src`, `pkg` and `bin`)
-
- /home/xperimental/
- │
- └── go
-     │
-     ├── src (sources)
-     │
-     ├── pkg (package object files)
-     │
-     └── bin (built executables)
-
-* $GOPATH (continued)
-
-.code gopath.txt
-
-*  
-
-.background imgs/break.jpg
+* Go Modules
 
 * Goroutines
 
@@ -221,21 +213,16 @@ Channels can be used like an array in a `for` loop:
 * What's More?
 
 - Interfaces
-- Struct Composition
-- Function Receivers
 - Cross-Compilation
+- Struct Composition
 - Struct Tags
-- Vendoring & Dependency Management
+- Function Receivers
+- Type Assertions / Type Switches
+- Advanced Concurrency with Goroutines and Channels
 
-* Recap
+* Q & A
 
-- Variables
-- Constants
-- Flow Control: `if`, `switch`, `for`
-- Functions
-- Packages
-- `$GOPATH`
-- Basic Concurrency using Goroutines & Channels
+* Overflow slides
 
 * Arrays
 
@@ -304,14 +291,6 @@ There is no need to state that a type implements an interface. If the methods ar
 
 .play examples/interfaces/interfaces-duck.go /START OMIT/,/END OMIT/
 
-* Error Handling
-
-If your function can cause an error, return a value of type `error` as the last return value:
-
-.code examples/errors/errors.go /START OMIT/,/END OMIT/
-
-This encourages handling errors close to where they happen instead of "bubbling up" to surrounding code.
-
 * Error Messages
 
 The message returned by `Error()` should have no punctuation and start lower-case, so they can be cascaded by surrounding code:
@@ -335,58 +314,3 @@ Because it is an interface, custom error types can be defined:
 .code examples/errors/errors-custom.go /START OMIT/,/END OMIT/
 
 : Custom error types are typically used to convey more information to surrounding error handling code, if that is not needed a generic error is usually fine.
-
-* Dependency Management
-
-By default Go has a problem with handling dependencies:
-
-- `$GOPATH` stores all source
-- Standard "go get" gets packages including all dependencies, but
-- "go get" retrieves the current `master` version
-- Only repositories missing from `$GOPATH` are retrieved by "go get"
-
-So a few tools were invented:
-
-- govendor (what we used to use)
-- godep
-- Glide
-- dep (what we use, currently version 0.4.1)
-- vgo (what might be the future)
-
-* Vendoring
-
-Go 1.5 made vendoring a part of the tooling. When a directory in the source tree is called "vendor" its subpaths behave special:
-
-.code vendor.txt
-
-In this case `main.go` would use the "pflag" package from the vendor directory and not the general one.
-
-* Using dep
-
-Initialize a project. This will respect current dependencies and convert from previous tools:
-
-    dep init
-
-See current status:
-
-    dep status
-
-Add a new dependency:
-
-    dep ensure -add github.com/spf13/pflag@1.0.0
-
-Update state of vendoring directory (idempotent after first run):
-
-    dep ensure
-
-Update all dependencies respecting "constraints":
-
-    dep ensure -update
-
-* What's More?
-
-- Struct Composition
-- Type Assertions / Type Switches
-- Advanced Concurrency with Goroutines and Channels
-- Cross-Compilation
-- Struct Tags

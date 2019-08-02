@@ -11,7 +11,7 @@ func main() {
 	fmt.Print("Go runs on ")
 	switch os { // os is a string
 	case "darwin":
-		fmt.Println("OS X.")
+		fmt.Println("macOS.")
 	case "linux":
 		fmt.Println("Linux.")
 	default:

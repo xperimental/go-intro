@@ -3,6 +3,11 @@ package main
 import "fmt"
 
 // START OMIT
+var (
+	IsVisibleFromOutside       = true
+	canOnlyBeUsedInsidePackage = 42
+)
+
 func Public() {
 	fmt.Println("Can be called from outside.")
 }
