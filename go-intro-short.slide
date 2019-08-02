@@ -34,7 +34,7 @@ It is just called "Go" but everyone is using "golang" to search for it online to
 
 * Hello World Explanation
 
-.play examples/hello.go
+.play -edit examples/hello.go
 
 - `package` defines a namespace ("package")
 - `import` makes public contents of other packages usable in current one
@@ -64,13 +64,13 @@ The compiler tries to infer the type if you omit it during declaration:
 
 Inside functions there is a short-cut for new variables:
 
-.play examples/vars/vars-short.go /START OMIT/,/END OMIT/
+.play -edit examples/vars/vars-short.go /START OMIT/,/END OMIT/
 
 * Variables - Pointers
 
 Pointers are variables which contain an address of another variable. Pointers can be used with all types, and are also statically typed:
 
-.play examples/vars/pointers.go /START OMIT/,/END OMIT/
+.play -edit examples/vars/pointers.go /START OMIT/,/END OMIT/
 
 They can be `nil` to point to nothing, but this creates an error when you try to access ("dereference") it:
 
@@ -82,7 +82,7 @@ But there is no pointer arithmetic (unlike C), so 🎉
 
 Complex variables can be created using `struct` types:
 
-.play examples/vars/vars-structs.go /START OMIT/,/END OMIT/
+.play -edit examples/vars/vars-structs.go /START OMIT/,/END OMIT/
 
 * Constants
 
@@ -90,7 +90,7 @@ Complex variables can be created using `struct` types:
 - Only simple types
 - Can not change value (compile error)
 - Only outside of functions (package scope)
-- Floating-point numbers have arbitrary precision (not limited to `float64`)
+- Floating-point numbers have arbitrary precision (until assigned to variable)
 
 .play -edit examples/vars/constants.go /START OMIT/,/END OMIT/
 
@@ -104,27 +104,27 @@ Complex variables can be created using `struct` types:
 
 `switch` can be used to combine multiple `if`-`else` blocks:
 
-.play examples/flow/flow-switch-basic.go /START OMIT/,/END OMIT/
+.play -edit examples/flow/flow-switch-basic.go /START OMIT/,/END OMIT/
 
 * Flow Control - Switch Without Variable
 
 If used without variable, the case statements need to be booleans:
 
-.play examples/flow/flow-switch-bare.go /START OMIT/,/END OMIT/
+.play -edit examples/flow/flow-switch-bare.go /START OMIT/,/END OMIT/
 
 * Flow Control - Loops
 
 - Classic `for`:
 
-.play examples/flow/flow-for-classic.go /START OMIT/,/END OMIT/
+.play -edit examples/flow/flow-for-classic.go /START OMIT/,/END OMIT/
 
 - Range (with array):
 
-.play examples/flow/flow-for-range.go /START OMIT/,/END OMIT/
+.play -edit examples/flow/flow-for-range.go /START OMIT/,/END OMIT/
 
 - Endless:
 
-.play examples/flow/flow-for-endless.go /START OMIT/,/END OMIT/
+.play -edit examples/flow/flow-for-endless.go /START OMIT/,/END OMIT/
 
 * Flow Control - Scoped Variables
 
@@ -136,11 +136,11 @@ You can create new variables inside blocks (if, switch, for), which are only ava
 
 Define using `func`, call using name:
 
-.play examples/functions/functions.go /START OMIT/,/END OMIT/
+.play -edit examples/functions/functions.go /START OMIT/,/END OMIT/
 
 You can pass parameters to functions:
 
-.play examples/functions/functions-params.go /START OMIT/,/END OMIT/
+.play -edit examples/functions/functions-params.go /START OMIT/,/END OMIT/
 
 * Functions - Multiple Return values
 
@@ -225,7 +225,7 @@ List dependencies of current module:
 
 Go can run functions asynchronously:
 
-.play examples/goroutines/goroutines.go /START OMIT/,/END OMIT/
+.play -edit examples/goroutines/goroutines.go /START OMIT/,/END OMIT/
 
 There is no manual thread management. Instead the runtime automatically multiplexes Goroutines over a pre-defined set of runtime threads.
 
@@ -235,7 +235,7 @@ There is no manual thread management. Instead the runtime automatically multiple
 - Typed
 - Blocking by default
 
-.play examples/goroutines/channels.go /START OMIT/,/END OMIT/
+.play -edit examples/goroutines/channels.go /START OMIT/,/END OMIT/
 
 * Channels (contd.)
 
