@@ -14,17 +14,17 @@ https://github.com/xperimental/go-intro
 Arrays can contain a fixed number of elements of a certain type.
 They can not be resized.
 
-.play -edit examples/vars/arrays.go /START OMIT/,/END OMIT/
+.play -edit _examples/vars/arrays.go /START OMIT/,/END OMIT/
 
 The built-in `len()` function can be used to get the array length.
 
-.play -edit examples/vars/arrays-len.go /START OMIT/,/END OMIT/
+.play -edit _examples/vars/arrays-len.go /START OMIT/,/END OMIT/
 
 * Slices
 
 Slices are "views" on a backing array. They can be resized.
 
-.play -edit examples/vars/slices.go /START OMIT/,/END OMIT/
+.play -edit _examples/vars/slices.go /START OMIT/,/END OMIT/
 
 The `len()` built-in also works on slices. There is an additional `cap()` built-in function that shows the size of the backing array.
 
@@ -32,11 +32,11 @@ The `len()` built-in also works on slices. There is an additional `cap()` built-
 
 `append()` can be used to append elements to a slice. If the backing array of the slice is too small (or even `nil`), a new one is allocated.
 
-.play -edit examples/vars/slices-append.go /START OMIT/,/END OMIT/
+.play -edit _examples/vars/slices-append.go /START OMIT/,/END OMIT/
 
 Append will overwrite values in the middle of an array! Be aware of this when using multiple slices on the same array:
 
-.play -edit examples/vars/slices-overlap.go /START OMIT/,/END OMIT/
+.play -edit _examples/vars/slices-overlap.go /START OMIT/,/END OMIT/
 
 Most of the time you will work with slices on an array that you did not create yourself.
 
@@ -44,21 +44,21 @@ Most of the time you will work with slices on an array that you did not create y
 
 The `map` type can be used to create associative arrays:
 
-.play -edit examples/vars/maps.go /START OMIT/,/END OMIT/
+.play -edit _examples/vars/maps.go /START OMIT/,/END OMIT/
 
 Map variables are pointers. The uninitialized `nil` value is not interchangable with an empty map, because it can not be directly written to:
 
-.play -edit examples/vars/maps-nil.go /START OMIT/,/END OMIT/
+.play -edit _examples/vars/maps-nil.go /START OMIT/,/END OMIT/
 
 Be aware that multiple variables can point to the same map when doing modifications:
 
-.play -edit examples/vars/maps-pointer.go /START OMIT/,/END OMIT/
+.play -edit _examples/vars/maps-pointer.go /START OMIT/,/END OMIT/
 
 * Methods
 
 Go is not object-oriented. But you can "attach" functions to any type using so-called receivers making them "methods":
 
-.play -edit examples/functions/functions-receiver.go /START OMIT/,/END OMIT/
+.play -edit _examples/functions/functions-receiver.go /START OMIT/,/END OMIT/
 
 Receivers can be values or pointers, your use-case determines which you need.
 
@@ -68,13 +68,13 @@ Receivers can be values or pointers, your use-case determines which you need.
 
 Interfaces define a set of method signatures. Any type that implements the methods can be used as the interface type.
 
-.play -edit examples/interfaces/interfaces.go /START OMIT/,/END OMIT/
+.play -edit _examples/interfaces/interfaces.go /START OMIT/,/END OMIT/
 
 * Interfaces - Duck Typing
 
 There is no need to state that a type implements an interface. If the methods are present, the compiler will recognize it. Even across package boundaries:
 
-.play -edit examples/interfaces/interfaces-duck.go /START OMIT/,/END OMIT/
+.play -edit _examples/interfaces/interfaces-duck.go /START OMIT/,/END OMIT/
 
 * Error Messages
 
@@ -96,6 +96,6 @@ The message returned by `Error()` should have no punctuation and start lower-cas
 
 Because it is an interface, custom error types can be defined:
 
-.code examples/errors/errors-custom.go /START OMIT/,/END OMIT/
+.code _examples/errors/errors-custom.go /START OMIT/,/END OMIT/
 
 : Custom error types are typically used to convey more information to surrounding error handling code, if that is not needed a generic error is usually fine.

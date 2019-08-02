@@ -30,11 +30,11 @@ It is just called "Go" but everyone is using "golang" to search for it online to
 
 * Obligatory Hello World
 
-.play -edit examples/hello.go
+.play -edit _examples/hello.go
 
 * Hello World Explanation
 
-.play -edit examples/hello.go
+.play -edit _examples/hello.go
 
 - `package` defines a namespace ("package")
 - `import` makes public contents of other packages usable in current one
@@ -50,31 +50,31 @@ Go only has two visibilities:
 
 Everything that has a capital first letter will be `Public`, everything else is `private`:
 
-.code examples/public-private.go /START OMIT/,/END OMIT/
+.code _examples/public-private.go /START OMIT/,/END OMIT/
 
 * Variables
 
 Variables store values of a certain type. The type of a variable can not change during execution ("static typing").
 
-.code examples/vars/vars.go /START OMIT/,/END OMIT/
+.code _examples/vars/vars.go /START OMIT/,/END OMIT/
 
 The compiler tries to infer the type if you omit it during declaration:
 
-.play -edit examples/vars/vars-notype.go /START OMIT/,/END OMIT/
+.play -edit _examples/vars/vars-notype.go /START OMIT/,/END OMIT/
 
 Inside functions there is a short-cut for new variables:
 
-.play -edit examples/vars/vars-short.go /START OMIT/,/END OMIT/
+.play -edit _examples/vars/vars-short.go /START OMIT/,/END OMIT/
 
 * Variables - Pointers
 
 Pointers are variables which contain an address of another variable. Pointers can be used with all types, and are also statically typed:
 
-.play -edit examples/vars/pointers.go /START OMIT/,/END OMIT/
+.play -edit _examples/vars/pointers.go /START OMIT/,/END OMIT/
 
 They can be `nil` to point to nothing, but this creates an error when you try to access ("dereference") it:
 
-.play -edit examples/vars/pointers-nil.go /START OMIT/,/END OMIT/
+.play -edit _examples/vars/pointers-nil.go /START OMIT/,/END OMIT/
 
 But there is no pointer arithmetic (unlike C), so 🎉
 
@@ -82,7 +82,7 @@ But there is no pointer arithmetic (unlike C), so 🎉
 
 Complex variables can be created using `struct` types:
 
-.play -edit examples/vars/vars-structs.go /START OMIT/,/END OMIT/
+.play -edit _examples/vars/vars-structs.go /START OMIT/,/END OMIT/
 
 * Constants
 
@@ -92,67 +92,67 @@ Complex variables can be created using `struct` types:
 - Only outside of functions (package scope)
 - Floating-point numbers have arbitrary precision (until assigned to variable)
 
-.play -edit examples/vars/constants.go /START OMIT/,/END OMIT/
+.play -edit _examples/vars/constants.go /START OMIT/,/END OMIT/
 
 * Flow Control - If
 
 `if` can be used to check for conditions:
 
-.play -edit examples/flow/flow-if.go /START OMIT/,/END OMIT/
+.play -edit _examples/flow/flow-if.go /START OMIT/,/END OMIT/
 
 * Flow Control - Switch
 
 `switch` can be used to combine multiple `if`-`else` blocks:
 
-.play -edit examples/flow/flow-switch-basic.go /START OMIT/,/END OMIT/
+.play -edit _examples/flow/flow-switch-basic.go /START OMIT/,/END OMIT/
 
 * Flow Control - Switch Without Variable
 
 If used without variable, the case statements need to be booleans:
 
-.play -edit examples/flow/flow-switch-bare.go /START OMIT/,/END OMIT/
+.play -edit _examples/flow/flow-switch-bare.go /START OMIT/,/END OMIT/
 
 * Flow Control - Loops
 
 - Classic `for`:
 
-.play -edit examples/flow/flow-for-classic.go /START OMIT/,/END OMIT/
+.play -edit _examples/flow/flow-for-classic.go /START OMIT/,/END OMIT/
 
 - Range (with array):
 
-.play -edit examples/flow/flow-for-range.go /START OMIT/,/END OMIT/
+.play -edit _examples/flow/flow-for-range.go /START OMIT/,/END OMIT/
 
 - Endless:
 
-.play -edit examples/flow/flow-for-endless.go /START OMIT/,/END OMIT/
+.play -edit _examples/flow/flow-for-endless.go /START OMIT/,/END OMIT/
 
 * Flow Control - Scoped Variables
 
 You can create new variables inside blocks (if, switch, for), which are only available in the block:
 
-.play -edit examples/flow/flow-if-variable.go /START OMIT/,/END OMIT/
+.play -edit _examples/flow/flow-if-variable.go /START OMIT/,/END OMIT/
 
 * Functions
 
 Define using `func`, call using name:
 
-.play -edit examples/functions/functions.go /START OMIT/,/END OMIT/
+.play -edit _examples/functions/functions.go /START OMIT/,/END OMIT/
 
 You can pass parameters to functions:
 
-.play -edit examples/functions/functions-params.go /START OMIT/,/END OMIT/
+.play -edit _examples/functions/functions-params.go /START OMIT/,/END OMIT/
 
 * Functions - Multiple Return values
 
 Functions can return more than one result:
 
-.play -edit examples/functions/functions-return-multi.go /START OMIT/,/END OMIT/
+.play -edit _examples/functions/functions-return-multi.go /START OMIT/,/END OMIT/
 
 * Error Handling
 
 If your function can cause an error, return a value of type `error` as the last return value:
 
-.code examples/errors/errors.go /START OMIT/,/END OMIT/
+.code _examples/errors/errors.go /START OMIT/,/END OMIT/
 
 This encourages handling errors close to where they happen instead of "bubbling up" to surrounding code.
 
@@ -225,7 +225,7 @@ List dependencies of current module:
 
 Go can run functions asynchronously:
 
-.play -edit examples/goroutines/goroutines.go /START OMIT/,/END OMIT/
+.play -edit _examples/goroutines/goroutines.go /START OMIT/,/END OMIT/
 
 There is no manual thread management. Instead the runtime automatically multiplexes Goroutines over a pre-defined set of runtime threads.
 
@@ -235,17 +235,17 @@ There is no manual thread management. Instead the runtime automatically multiple
 - Typed
 - Blocking by default
 
-.play -edit examples/goroutines/channels.go /START OMIT/,/END OMIT/
+.play -edit _examples/goroutines/channels.go /START OMIT/,/END OMIT/
 
 * Channels (contd.)
 
 You can define a buffer when making a channel:
 
-.play -edit examples/goroutines/channels-buffered.go /START OMIT/,/END OMIT/
+.play -edit _examples/goroutines/channels-buffered.go /START OMIT/,/END OMIT/
 
 Channels can be used like an array in a `for` loop:
 
-.play -edit examples/goroutines/channels-for.go /START OMIT/,/END OMIT/
+.play -edit _examples/goroutines/channels-for.go /START OMIT/,/END OMIT/
 
 * What's More?
 
