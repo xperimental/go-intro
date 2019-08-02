@@ -184,27 +184,64 @@ But where are they downloaded to?
 
 * Go Modules
 
+Go used to have a problem with dependency management:
+
+- One single path for all projects (`$GOPATH`)
+- Resolved to `master` version of all dependencies by default
+- No concept of versions
+
+Starting with Go 1.11 there's a new concept called "Go Modules" which aims to solve that:
+
+- No `$GOPATH` anymore (can still be used for older codebases)
+- `go.mod` defines current module and dependencies
+
+.code go.mod
+
+- `go.sum` contains hashes of resolved dependencies (for validating integrity)
+
+* Go Modules (contd.)
+
+Create a new module in current directory:
+
+ go mod init <module name>
+
+Add a new dependency (latest version):
+
+ go get -m <import>
+
+Update all dependencies (only patch changes):
+
+ go get -m -u=patch
+
+Update one dependency to latest version:
+
+ go get -m -u <import>
+
+List dependencies of current module:
+
+ go list -m all
+
 * Goroutines
 
-Go can run functions asynchronous:
+Go can run functions asynchronously:
 
 .play examples/goroutines/goroutines.go /START OMIT/,/END OMIT/
 
+There is no manual thread management. Instead the runtime automatically multiplexes Goroutines over a pre-defined set of runtime threads.
+
 * Channels
 
-- Messaging between Goroutines
+- Messaging between Goroutines (do not use global variables)
 - Typed
 - Blocking by default
 
 .play examples/goroutines/channels.go /START OMIT/,/END OMIT/
 
-* Channels - Buffering
+* Channels (contd.)
 
 You can define a buffer when making a channel:
 
 .play -edit examples/goroutines/channels-buffered.go /START OMIT/,/END OMIT/
-
-* Channels - Loops
 
 Channels can be used like an array in a `for` loop:
 
@@ -212,6 +249,7 @@ Channels can be used like an array in a `for` loop:
 
 * What's More?
 
+- Arrays, slices and maps
 - Interfaces
 - Cross-Compilation
 - Struct Composition
@@ -221,96 +259,3 @@ Channels can be used like an array in a `for` loop:
 - Advanced Concurrency with Goroutines and Channels
 
 * Q & A
-
-* Overflow slides
-
-* Arrays
-
-Arrays can contain a fixed number of elements of a certain type.
-They can not be resized.
-
-.play examples/vars/arrays.go /START OMIT/,/END OMIT/
-
-The built-in `len()` function can be used to get the array length.
-
-.play examples/vars/arrays-len.go /START OMIT/,/END OMIT/
-
-* Slices
-
-Slices are "views" on a backing array. They can be resized.
-
-.play -edit examples/vars/slices.go /START OMIT/,/END OMIT/
-
-The `len()` built-in also works on slices. There is an additional `cap()` built-in function that shows the size of the backing array.
-
-* Append
-
-`append()` can be used to append elements to a slice. If the backing array of the slice is too small (or even `nil`), a new one is allocated.
-
-.play -edit examples/vars/slices-append.go /START OMIT/,/END OMIT/
-
-Append will overwrite values in the middle of an array! Be aware of this when using multiple slices on the same array:
-
-.play examples/vars/slices-overlap.go /START OMIT/,/END OMIT/
-
-Most of the time you will work with slices on an array that you did not create yourself.
-
-* Maps
-
-The `map` type can be used to create associative arrays:
-
-.play examples/vars/maps.go /START OMIT/,/END OMIT/
-
-Map variables are pointers. The uninitialized `nil` value is not interchangable with an empty map, because it can not be directly written to:
-
-.play examples/vars/maps-nil.go /START OMIT/,/END OMIT/
-
-Be aware that multiple variables can point to the same map when doing modifications:
-
-.play examples/vars/maps-pointer.go /START OMIT/,/END OMIT/
-
-* Methods
-
-Go is not object-oriented. But you can "attach" functions to any type using so-called receivers making them "methods":
-
-.play examples/functions/functions-receiver.go /START OMIT/,/END OMIT/
-
-Receivers can be values or pointers, your use-case determines which you need.
-
-: Mention that this works not just with structs but with any type.
-
-* Interfaces
-
-Interfaces define a set of method signatures. Any type that implements the methods can be used as the interface type.
-
-.play examples/interfaces/interfaces.go /START OMIT/,/END OMIT/
-
-* Interfaces - Duck Typing
-
-There is no need to state that a type implements an interface. If the methods are present, the compiler will recognize it. Even across package boundaries:
-
-.play examples/interfaces/interfaces-duck.go /START OMIT/,/END OMIT/
-
-* Error Messages
-
-The message returned by `Error()` should have no punctuation and start lower-case, so they can be cascaded by surrounding code:
-
-    user, err := db.Get(userID)
-    if err != nil {
-        return fmt.Errorf("error while getting user: %s", innerErr)
-    }
-    --> error while getting user: database error: connection timed out
-
-* Custom Error Types
-
-`error` is a built-in interface. The definition looks like this:
-
-    type error interface {
-        Error() string
-    }
-
-Because it is an interface, custom error types can be defined:
-
-.code examples/errors/errors-custom.go /START OMIT/,/END OMIT/
-
-: Custom error types are typically used to convey more information to surrounding error handling code, if that is not needed a generic error is usually fine.
