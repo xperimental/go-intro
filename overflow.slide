@@ -9,6 +9,14 @@ https://github.com/xperimental/go-intro
 
 * Overflow slides
 
+These are all the slides that were omitted in the short version.
+
+* Flow Control - Scoped Variables
+
+You can create new variables inside blocks (if, switch, for), which are only available in the block:
+
+.play -edit _examples/flow/flow-if-variable.go /START OMIT/,/END OMIT/
+
 * Arrays
 
 Arrays can contain a fixed number of elements of a certain type.

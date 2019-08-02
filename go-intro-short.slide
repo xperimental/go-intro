@@ -112,7 +112,7 @@ If used without variable, the case statements need to be booleans:
 
 .play -edit _examples/flow/flow-switch-bare.go /START OMIT/,/END OMIT/
 
-* Flow Control - Loops
+* Flow Control - Loops (there is only `for`)
 
 - Classic `for`:
 
@@ -125,12 +125,6 @@ If used without variable, the case statements need to be booleans:
 - Endless:
 
 .play -edit _examples/flow/flow-for-endless.go /START OMIT/,/END OMIT/
-
-* Flow Control - Scoped Variables
-
-You can create new variables inside blocks (if, switch, for), which are only available in the block:
-
-.play -edit _examples/flow/flow-if-variable.go /START OMIT/,/END OMIT/
 
 * Functions
 
@@ -162,7 +156,15 @@ Packages can be used to break up programs into components that can be reused and
 
 - One directory = one package
 - Convention: directory name = package name
-- `main` is special: will generate an executable
+- Last "segment" of import path will become accessor (can be changed):
+
+ import (
+     "github.com/gorilla/mux"       # for example: mux.NewRouter()
+     flag "github.com/spf13/pflag"  #              flag.Parse()
+ )
+
+- Using `package main` will generate an executable with name of directory
+- `main` package can not be imported
 
 * Package Names
 
